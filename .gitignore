@@ -1,2 +1,5 @@
 node_modules
 dev.js
+client/package-lock.json
+client/build
+client/node_modules
