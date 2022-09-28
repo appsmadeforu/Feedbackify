@@ -26,6 +26,10 @@ app.use(passport.session());
 // auth routes file will return a function and we pass app object to the function
 require('./routes/authRoutes')(app)
 
+if (process.env.NODE_ENV == 'production') {
+    app.use(express.static('client/build'))
+}
+
 // HEROKU will inject this environment variable
 const PORT = process.env.PORT || 5000
 

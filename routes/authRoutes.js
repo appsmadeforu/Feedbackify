@@ -10,12 +10,15 @@ module.exports = app => {
         }
         ));
 
-    app.get('/auth/google/callback', passport.authenticate('google'))
+    app.get('/auth/google/callback', passport.authenticate('google'),
+    (req, res)=> {
+        res.redirect('/')
+    })
     
     app.get('/api/logout', (req, res)=> {
         req.logout(); //logout function is attached by passport
         // it will kill the cookie and logout the user
-        res.send(req.user);
+        res.redirect('/')
     })
     app.get('/api/current_user', (req, res)=>{
         res.send(req.user); // Already logged in user can get the access because user is in the session now
